@@ -17,7 +17,7 @@ def tokenization(source):
 
 
 def filtering(documents):
-    stopwords = open("stopword-list", "r")
+    stopwords = open("stopword-list.txt", "r")
     stopwords = stopwords.read()
     stopwords = stopwords.split("\n")
 
@@ -29,7 +29,7 @@ def filtering(documents):
     return filtered
 
 
-def stemming(documentss):
+def stemming(documents):
     stemmed = []
     for document in documents:
         words = []
@@ -48,32 +48,8 @@ def printDocs(documents):
 def termFromDocuments(documents):
     terms = []
     for document in documents:
-        terms += document
+        for word in document:
+            if word not in terms:
+                terms.append(word)
 
     return terms
-
-
-source = open("source", "r")
-source = source.read()
-
-# for document in source:
-#     print(document)
-#
-# for i in range(0, len(source)):
-#     source[i] = stemmer.stem(source[i])
-#
-# print()
-
-documents = tokenization(source)
-
-documents = filtering(documents)
-
-documents = stemming(documents)
-
-terms = termFromDocuments(documents)
-print(terms, len(terms))
-terms = set(terms)
-terms = list(terms)
-print(terms, len(terms))
-print()
-printDocs(documents)
