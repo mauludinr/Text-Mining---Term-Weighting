@@ -37,4 +37,4 @@ output.write_doc_frequency(idf, "Inverse Document Frequencies")
 tf_idf = termW.tf_idf(logWeight, idf)
 output.write_term_weight(terms, tf_idf, "tf * idf")
 
-output.save("token.xls")
+output.save("result.xls")
